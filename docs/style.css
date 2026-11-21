@@ -1,0 +1,1482 @@
+/* ==========================================================================
+   Exact Upstream CSS from godotengine/godot-docs (master/_static/css/custom.css)
+   + godotengine/godot-docs (master/index.rst & _templates/breadcrumbs.html)
+   Adapted cleanly for standalone static HTML with explicit dark/light toggle.
+   ========================================================================== */
+
+/* Official Light Theme Tokens (from godot-docs/_static/css/custom.css) */
+:root,
+html[data-theme="light"] {
+  color-scheme: light;
+  --body-color: #404040;
+  --content-wrap-background-color: #efefef;
+  --content-background-color: #fcfcfc;
+  --logo-opacity: 1.0;
+
+  --navbar-background-color: #333f67;
+  --navbar-background-color-hover: #29355c;
+  --navbar-background-color-active: #212d51;
+  --navbar-current-background-color: #212d51;
+  --navbar-current-background-color-hover: #182343;
+  --navbar-current-background-color-active: #131e3b;
+  --navbar-category-active-color: rgba(255 115 129 / 10%);
+  --navbar-current-color: #f1f9ff;
+  --navbar-level-1-color: #c3e3ff;
+  --navbar-level-2-color: #b8d6f0;
+  --navbar-level-3-color: #a3c4e1;
+  --navbar-expand-base-color: #81a3c2;
+  --navbar-expand-hover-color: #c3e3ff;
+  --navbar-expand-active-color: #f1f9ff;
+  --navbar-dimmed-color: #a3c4e1;
+  --navbar-heading-color: #ff7381;
+  --navbar-scrollbar-color: #d45a66;
+  --navbar-scrollbar-hover-color: #b14550;
+  --navbar-scrollbar-active-color: #72383e;
+  --navbar-scrollbar-background: #131e2b;
+
+  --link-color: #2980b9;
+  --link-color-hover: #3091d1;
+  --link-color-active: #105078;
+  --link-color-visited: #9b59b6;
+  --external-reference-icon: url("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyIiB3aWR0aD0iMTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjk4MGI5Ij48cGF0aCBkPSJtNy41IDcuMXYzLjRoLTZ2LTZoMy40Ii8+PHBhdGggZD0ibTUuNzY1IDFoNS4yMzV2NS4zOWwtMS41NzMgMS41NDctMS4zMS0xLjMxLTIuNzI0IDIuNzIzLTIuNjktMi42ODggMi44MS0yLjgwOC0xLjMxMy0xLjMxeiIvPjwvZz48L3N2Zz4K");
+
+  --hr-color: #e1e4e5;
+  --table-row-odd-background-color: #f3f6f6;
+  --code-background-color: #e9eae5;
+  --code-border-color: #e1e4e5;
+  --code-literal-color: #c03e41;
+  --input-background-color: #fcfcfc;
+  --input-focus-border-color: #5f8cff;
+
+  --tabs-background-color: #e1e4e5;
+  --tabs-selected-color: #a2a9ae;
+  --code-tabs-background-color: #e6e6e6;
+  --code-tabs-selected-color: #8a9378;
+
+  --search-odd-color: rgb(133 160 253 / 24%);
+  --search-even-color: rgb(202 209 239 / 30%);
+  --search-highlighted-color: rgb(255 205 0 / 25%);
+  --search-context-color: #6c6e72;
+
+  /* Keep dark highlight canvas for pre-highlighted Godot editor GDScript spans */
+  --highlight-background-color: #1d1d1d;
+  --highlight-default-color: rgba(255, 255, 255, 0.85);
+
+  --copybtn-background-color: #2a303c;
+  --copybtn-background-color-hover: #3e4450;
+  --copybtn-border-color: #3e4450;
+  --copybtn-border-color-hover: #8b949e;
+  --copybtn-icon-color: #8b949e;
+  --copybtn-icon-color-success: #3fb950;
+  --copybtn-box-shadow: 0 0 transparent, 0 0 transparent;
+  --copybtn-border-color-success: #238636;
+
+  --admonition-note-background-color: #e7f2fa;
+  --admonition-note-color: #404040;
+  --admonition-note-title-background-color: #6ab0de;
+  --admonition-note-title-color: #fff;
+  --admonition-note-icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTggMWE3IDcgMCAwIDAgMCAxNEE3IDcgMCAwIDAgOCAxek03IDRoMnYySDd6bTAgM2gydjVIN3oiLz48L3N2Zz4=");
+  --admonition-attention-background-color: #ffedcc;
+  --admonition-attention-color: #404040;
+  --admonition-attention-title-background-color: #f0b37e;
+  --admonition-attention-title-color: #fff;
+  --admonition-attention-icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTggMWE3IDcgMCAwIDAgMCAxNEE3IDcgMCAwIDAgOCAxek03IDNoMnY3SDd6bTAgOGgydjJIN3oiLz48L3N2Zz4=");
+  --admonition-danger-background-color: #fcf3f2;
+  --admonition-danger-color: #404040;
+  --admonition-danger-title-background-color: #e9a499;
+  --admonition-danger-title-color: #fff;
+  --admonition-danger-icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTggMmExIDEgMCAwIDAtLjg1LjQ4NGwtNiAxMEExIDEgMCAwIDAgMiAxNGgxMmExIDEgMCAwIDAgLjg1Ny0xLjUxNGwtNi0xMGExIDEgMCAwIDAtLjg1LS40ODR6TTcgNWgydjVIN3ptMCA2aDJ2Mkg3eiIvPjwvc3ZnPg==");
+  --admonition-tip-background-color: #dbfaf4;
+  --admonition-tip-color: #404040;
+  --admonition-tip-title-background-color: #1abc9c;
+  --admonition-tip-title-color: #fff;
+  --admonition-tip-icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTggMWE3IDcgMCAxIDAgMCAxNEE3IDcgMCAwIDAgOCAxem0zLjI5MyAzLjg3NyAxLjQxNCAxLjQxNEw3IDEyLjAwMSAzLjI5MyA4LjI5bDEuNDE0LTEuNDE0TDcgOS4xN3oiLz48L3N2Zz4=");
+
+  --kbd-background-color: #fafbfc;
+  --kbd-outline-color: #d1d5da;
+  --kbd-shadow-color: #b0b7bf;
+  --kbd-text-color: #444d56;
+
+  --btn-neutral-background-color: #f3f6f6;
+  --btn-neutral-hover-background-color: #e5ebeb;
+  --footer-color: #808080;
+
+  --sans-serif-font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", "Noto Sans", sans-serif;
+  --monospace-font-family: "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", Courier, monospace;
+
+  --svg-parent-fill: #e7f2fa;
+  --svg-parent-text: #1b496e;
+  --svg-child-fill: #fae8ed;
+  --svg-child-text: #7a2038;
+  --svg-tag-down: #2980b9;
+  --svg-tag-up: #c03e41;
+  --svg-desc: #404040;
+  --svg-sub: #6c6e72;
+}
+
+/* Official Dark Theme Tokens (from godot-docs/_static/css/custom.css) */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --body-color: rgba(255, 255, 255, 0.85);
+  --content-wrap-background-color: #202326;
+  --content-background-color: #2e3236;
+  --logo-opacity: 0.85;
+
+  --navbar-background-color: #25282b;
+  --navbar-background-color-hover: #333639;
+  --navbar-background-color-active: #111417;
+  --navbar-current-background-color: #333639;
+  --navbar-current-background-color-hover: #44474a;
+  --navbar-current-background-color-active: #222528;
+  --navbar-category-active-color: rgba(238 115 129 / 10%);
+  --navbar-current-color: #fefefe;
+  --navbar-level-1-color: #ddd;
+  --navbar-level-2-color: #ccc;
+  --navbar-level-3-color: #bbb;
+  --navbar-expand-base-color: #80848e;
+  --navbar-expand-hover-color: #ccc;
+  --navbar-expand-active-color: #ddd;
+  --navbar-dimmed-color: #bbb;
+  --navbar-heading-color: #ee7381;
+  --navbar-scrollbar-color: #be5460;
+  --navbar-scrollbar-hover-color: #963e48;
+  --navbar-scrollbar-active-color: #5f3034;
+  --navbar-scrollbar-background: #1c1e21;
+
+  --link-color: #8cf;
+  --link-color-hover: #9df;
+  --link-color-active: #6ad;
+  --link-color-visited: #cb99f6;
+  --external-reference-icon: url("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyIiB3aWR0aD0iMTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOGNmIj48cGF0aCBkPSJtNy41IDcuMXYzLjRoLTZ2LTZoMy40Ii8+PHBhdGggZD0ibTUuNzY1IDFoNS4yMzV2NS4zOWwtMS41NzMgMS41NDctMS4zMS0xLjMxLTIuNzI0IDIuNzIzLTIuNjktMi42ODggMi44MS0yLjgwOC0xLjMxMy0xLjMxeiIvPjwvZz48L3N2Zz4K");
+
+  --hr-color: #555;
+  --table-row-odd-background-color: #3b3e41;
+  --code-background-color: #22252d;
+  --code-border-color: #505356;
+  --code-literal-color: #d68f8f;
+  --input-background-color: #333537;
+  --input-focus-border-color: #5f8cff;
+
+  --tabs-background-color: #434649;
+  --tabs-selected-color: #a2a9ae;
+  --code-tabs-background-color: #3c3c3c;
+  --code-tabs-selected-color: #6a6a6a;
+
+  --search-odd-color: #202326;
+  --search-even-color: #25282b;
+  --search-highlighted-color: rgb(255 205 0 / 16%);
+  --search-context-color: #aaa;
+
+  --highlight-background-color: #1d1d1d;
+  --highlight-default-color: rgba(255, 255, 255, 0.85);
+
+  --copybtn-background-color: #2a303c;
+  --copybtn-background-color-hover: #3e4450;
+  --copybtn-border-color: #3e4450;
+  --copybtn-border-color-hover: #8b949e;
+  --copybtn-icon-color: #8b949e;
+  --copybtn-icon-color-success: #3fb950;
+  --copybtn-box-shadow: 0 0 transparent, 0 0 transparent;
+  --copybtn-border-color-success: #238636;
+
+  --admonition-note-background-color: #303d4f;
+  --admonition-note-color: #bfeeff;
+  --admonition-note-title-background-color: #305070;
+  --admonition-note-title-color: #bfefff;
+  --admonition-attention-background-color: #444033;
+  --admonition-attention-color: #ffeeaf;
+  --admonition-attention-title-background-color: #665022;
+  --admonition-attention-title-color: #ffeeaf;
+  --admonition-danger-background-color: #433;
+  --admonition-danger-color: #fcc;
+  --admonition-danger-title-background-color: #633;
+  --admonition-danger-title-color: #fcc;
+  --admonition-tip-background-color: #28382d;
+  --admonition-tip-color: #dfd;
+  --admonition-tip-title-background-color: #336648;
+  --admonition-tip-title-color: #dfd;
+
+  --kbd-background-color: #595b5d;
+  --kbd-outline-color: #3d4144;
+  --kbd-shadow-color: #1e2023;
+  --kbd-text-color: #e2f2ff;
+
+  --btn-neutral-background-color: #404040;
+  --btn-neutral-hover-background-color: #505050;
+  --footer-color: #aaa;
+
+  --svg-parent-fill: #303d4f;
+  --svg-parent-text: #bfefff;
+  --svg-child-fill: #3b2d34;
+  --svg-child-text: #ffdce3;
+  --svg-tag-down: #8cf;
+  --svg-tag-up: #ee7381;
+  --svg-desc: rgba(255, 255, 255, 0.85);
+  --svg-sub: #aaa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--content-wrap-background-color);
+}
+
+body,
+input[type="text"],
+input[type="button"],
+button,
+h1, h2, h3, h4, h5, h6,
+.btn,
+.rst-versions,
+.sphinx-tabs-tab {
+  font-family: var(--sans-serif-font-family);
+  font-feature-settings: "calt" 0, "ss04" 1, "tnum" 1;
+}
+
+body.wy-body-for-nav {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background-color: var(--content-wrap-background-color);
+  color: var(--body-color);
+  font-size: 15px;
+  line-height: 25px;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media only screen and (min-width: 769px) {
+  body.wy-body-for-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-color-hover);
+  text-decoration: underline;
+}
+
+a:active {
+  color: var(--link-color-active);
+}
+
+a:visited {
+  color: var(--link-color-visited);
+}
+
+a.btn:hover {
+  text-decoration: none;
+}
+
+/* Official external link icon (12x12 box-arrow) */
+.reference.external {
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-image: var(--external-reference-icon);
+  padding-right: 13px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hr-color);
+  margin: 20px 0;
+}
+
+/* ==========================================================================
+   Main Grid Shell (Exact 300px sidebar + 900px content = 1200px centered)
+   ========================================================================== */
+.wy-grid-for-nav {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Mobile Header */
+.wy-nav-top {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: var(--navbar-background-color);
+  color: var(--navbar-level-1-color);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  z-index: 250;
+}
+
+.wy-nav-top-title {
+  color: var(--navbar-level-1-color) !important;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.wy-nav-top-btn {
+  background: transparent;
+  border: none;
+  color: var(--navbar-level-1-color);
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 260;
+}
+
+/* ==========================================================================
+   Left Sidebar (.wy-nav-side) - Exact 300px official width & palette
+   ========================================================================== */
+.wy-nav-side {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 300px;
+  flex-shrink: 0;
+  background-color: var(--navbar-background-color);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.wy-side-scroll {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.wy-side-nav-search {
+  background-color: var(--navbar-background-color);
+  color: var(--navbar-level-1-color);
+  padding: 12px 14px 14px 14px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.wy-side-nav-search > a {
+  display: inline-block;
+  padding: 0;
+  margin-top: 0.404em;
+  margin-bottom: 0.404em;
+  border-radius: 4px;
+}
+
+.wy-side-nav-search > a:hover {
+  background-color: var(--navbar-background-color-hover);
+}
+
+.wy-side-nav-search > a:active {
+  background-color: var(--navbar-background-color-active);
+}
+
+.logo {
+  opacity: var(--logo-opacity);
+}
+
+.wy-side-nav-search > a img.logo {
+  display: block;
+  width: 270px;
+  height: 70px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.wy-side-nav-search input[type="text"] {
+  width: 100%;
+  border-radius: 50px;
+  padding: 6px 14px;
+  background-color: var(--input-background-color);
+  color: var(--body-color);
+  border: 2px solid transparent;
+  box-shadow: none;
+  transition: none;
+  font-size: 14px;
+  outline: none;
+}
+
+.wy-side-nav-search input[type="text"]:focus {
+  border: 2px solid var(--input-focus-border-color);
+}
+
+.wy-side-nav-search input[type="text"]::placeholder {
+  color: var(--body-color);
+  opacity: 0.55;
+}
+
+/* Scrollable vertical menu with exact official pink scrollbar */
+.wy-menu.wy-menu-vertical {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 24px;
+  scrollbar-color: var(--navbar-scrollbar-color) var(--navbar-scrollbar-background);
+}
+
+.wy-menu.wy-menu-vertical::-webkit-scrollbar {
+  width: .75rem;
+}
+
+.wy-menu.wy-menu-vertical::-webkit-scrollbar-track {
+  background-color: var(--navbar-scrollbar-background);
+}
+
+.wy-menu.wy-menu-vertical::-webkit-scrollbar-thumb {
+  background-color: var(--navbar-scrollbar-color);
+}
+
+.wy-menu.wy-menu-vertical::-webkit-scrollbar-thumb:hover {
+  background-color: var(--navbar-scrollbar-hover-color);
+}
+
+.wy-menu.wy-menu-vertical::-webkit-scrollbar-thumb:active {
+  background-color: var(--navbar-scrollbar-active-color);
+}
+
+/* Official Togglable Sidebar Captions (p.caption + ul) */
+.wy-menu-vertical p.caption {
+  margin: 0;
+  padding: 0 1.618em;
+  height: 32px;
+  line-height: 32px;
+  font-size: 88%;
+  font-weight: 700;
+  color: var(--navbar-heading-color);
+  letter-spacing: 0.75px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.wy-menu-vertical p.caption.active {
+  background-color: var(--navbar-category-active-color);
+}
+
+.wy-menu-vertical p.caption:hover {
+  background-color: var(--navbar-background-color-hover);
+}
+
+.wy-menu-vertical p.caption .caption-text {
+  display: inline-flex;
+  align-items: center;
+}
+
+.wy-menu-vertical p.caption .caption-text:before {
+  content: "❯";
+  display: inline-block;
+  margin-left: -4px;
+  transition: transform 0.2s;
+  width: 16px;
+  height: 32px;
+  line-height: 32px;
+  transform-origin: 2px 16px;
+}
+
+.wy-menu-vertical p.caption.active .caption-text:before {
+  transform: rotate(90deg);
+}
+
+.wy-menu-vertical p.caption + ul {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wy-menu-vertical p.caption + ul.active {
+  display: block;
+}
+
+/* Sidebar Navigation Items */
+.wy-menu-vertical li {
+  background-color: var(--navbar-background-color);
+}
+
+.wy-menu-vertical li.current {
+  background-color: var(--navbar-current-background-color);
+}
+
+.wy-menu-vertical li.toctree-l1 > a {
+  display: flex;
+  align-items: flex-start;
+  color: var(--navbar-level-1-color);
+  font-size: 92%;
+  line-height: 20px;
+  padding: .4045em 1.2em .4045em 1.918em;
+  border: none;
+  text-decoration: none;
+}
+
+.wy-menu-vertical li.toctree-l1 > a:visited {
+  color: var(--navbar-level-1-color);
+}
+
+.wy-menu-vertical li.toctree-l1 > a:hover {
+  background-color: var(--navbar-background-color-hover);
+  color: var(--navbar-level-1-color);
+  text-decoration: none;
+}
+
+.wy-menu-vertical li.toctree-l1 > a:active {
+  background-color: var(--navbar-background-color-active);
+}
+
+.wy-menu-vertical li.toctree-l1.current > a {
+  background-color: var(--navbar-current-background-color-hover);
+  border-bottom: 2px solid var(--navbar-current-background-color);
+  color: var(--navbar-current-color);
+  font-weight: 700;
+}
+
+.wy-menu-vertical li.toctree-l1.current > a:hover {
+  background-color: var(--navbar-current-background-color-hover);
+  color: var(--navbar-current-color);
+}
+
+.wy-menu-vertical li > a button.toctree-expand {
+  background: transparent;
+  border: 1px solid var(--navbar-expand-base-color);
+  border-radius: 2px;
+  color: var(--navbar-expand-base-color) !important;
+  opacity: 0.9;
+  margin-right: 8px;
+  margin-top: 3px;
+  padding: 0;
+  width: 13px;
+  min-width: 13px;
+  height: 13px;
+  font-family: var(--monospace-font-family);
+  font-size: 10px;
+  line-height: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.wy-menu-vertical li.current > a button.toctree-expand {
+  color: var(--navbar-current-color) !important;
+  border-color: var(--navbar-current-color);
+}
+
+.wy-menu-vertical li > a:hover button.toctree-expand {
+  color: var(--navbar-expand-hover-color) !important;
+  border-color: var(--navbar-expand-hover-color);
+  opacity: 1;
+}
+
+.wy-menu-vertical ul.rtd-sublist {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wy-menu-vertical li.expanded > ul.rtd-sublist,
+.wy-menu-vertical li.current > ul.rtd-sublist {
+  display: block;
+}
+
+.wy-menu-vertical li ul.rtd-sublist li > a {
+  display: block;
+  background-color: var(--navbar-current-background-color);
+  border: none;
+  border-bottom: 1px solid var(--navbar-current-background-color);
+  color: var(--navbar-level-2-color);
+  font-size: 86%;
+  line-height: 19px;
+  padding: 5px 1.2em 5px 3.1em;
+  text-decoration: none;
+}
+
+.wy-menu-vertical li ul.rtd-sublist li > a:visited {
+  color: var(--navbar-level-2-color);
+}
+
+.wy-menu-vertical li ul.rtd-sublist li > a:hover {
+  background-color: var(--navbar-current-background-color-hover);
+  color: var(--navbar-level-1-color);
+  text-decoration: none;
+}
+
+.wy-menu-vertical li ul.rtd-sublist li > a.active {
+  color: var(--navbar-current-color);
+  font-weight: 700;
+}
+
+/* Official Bottom-Left Read the Docs Version Strip (.rst-versions) */
+.rst-versions {
+  background-color: var(--navbar-current-background-color);
+  font-size: 12.5px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.rst-versions.shift-up:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -8px;
+  width: 100%;
+  height: 8px;
+  pointer-events: none;
+  background: linear-gradient(transparent, hsla(0, 0%, 0%, 0.2));
+}
+
+.rst-versions .rst-current-version {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background-color: var(--navbar-current-background-color);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--navbar-level-1-color);
+  cursor: pointer;
+  user-select: none;
+}
+
+.rst-versions .rst-current-version:hover {
+  background-color: var(--navbar-current-background-color-hover);
+}
+
+.rst-versions .rst-current-version:active {
+  background-color: var(--navbar-current-background-color-active);
+}
+
+.rst-ver-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+}
+
+.rst-ver-right {
+  color: var(--navbar-dimmed-color);
+}
+
+.rst-versions .rst-other-versions {
+  display: none;
+  padding: 12px 14px;
+  color: var(--navbar-heading-color);
+  border-top: 1px solid var(--hr-color);
+}
+
+.rst-versions.shift-up .rst-other-versions {
+  display: block;
+}
+
+.rst-versions .rst-other-versions dl {
+  margin: 0 0 8px 0;
+}
+
+.rst-versions .rst-other-versions dl:last-child {
+  margin-bottom: 0;
+}
+
+.rst-versions .rst-other-versions dt {
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.rst-versions .rst-other-versions dd {
+  display: inline-block;
+  margin: 0 12px 3px 0;
+}
+
+.rst-versions .rst-other-versions dd a,
+.ver-link-btn {
+  color: var(--navbar-level-1-color);
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+.rst-versions .rst-other-versions dd a:hover,
+.ver-link-btn:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Main Content Column (.wy-nav-content-wrap / .wy-nav-content)
+   ========================================================================== */
+.wy-nav-content-wrap {
+  flex: 1;
+  min-width: 0;
+  background-color: var(--content-wrap-background-color);
+}
+
+.wy-nav-content {
+  background-color: var(--content-background-color);
+  max-width: 900px;
+  min-height: 100vh;
+  padding: 24px 48px 48px 48px;
+}
+
+/* Official Breadcrumbs Header (from _templates/breadcrumbs.html) */
+.wy-breadcrumbs-outer {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.godot-docs-header-title {
+  font-size: 105%;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.wy-breadcrumbs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.wy-breadcrumbs li {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 !important;
+}
+
+.crumb-home-icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--link-color);
+}
+
+.godot-breadcrumbs-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.header-action-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--link-color);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.header-action-link:hover {
+  color: var(--link-color-hover);
+  text-decoration: underline;
+}
+
+.godot-edit-guidelines {
+  font-size: 14px;
+  padding-top: 4px;
+}
+
+.godot-breadcrumbs-bar hr {
+  margin: 14px 0 22px 0;
+}
+
+/* Search Results (matches upstream #search-results) */
+#search-results {
+  margin-bottom: 24px;
+}
+
+#search-results .search-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--footer-color);
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+#search-results .search-clear-btn {
+  background-color: var(--btn-neutral-background-color);
+  color: var(--body-color);
+  border: 1px solid var(--hr-color);
+  border-radius: 3px;
+  padding: 3px 10px;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+#search-results .search-clear-btn:hover {
+  background-color: var(--btn-neutral-hover-background-color);
+}
+
+#search-results ul.search {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#search-results .search li {
+  background-color: var(--search-odd-color);
+  padding: 16px 14px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 14px;
+}
+
+#search-results .search li:nth-child(2n) {
+  background-color: var(--search-even-color);
+}
+
+#search-results .search li > a:first-child {
+  display: block;
+  font-weight: 700;
+  font-size: 120%;
+  margin-bottom: 6px;
+}
+
+#search-results .context {
+  color: var(--search-context-color);
+  padding-left: 14px;
+  position: relative;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+#search-results .context:before {
+  content: "•";
+  display: block;
+  position: absolute;
+  left: 0;
+  font-size: 120%;
+}
+
+#search-results .highlighted {
+  background-color: var(--search-highlighted-color);
+  border-radius: 2px;
+  color: var(--body-color);
+  font-weight: 700;
+  padding: 0 3px;
+}
+
+/* ==========================================================================
+   Typography & Headings (Exact upstream line-heights & spacing)
+   ========================================================================== */
+.rst-content h1 {
+  font-size: 175%;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  line-height: 1.3;
+}
+
+.rst-content h2 {
+  font-size: 145%;
+  font-weight: 700;
+  margin: 30px 0 14px 0;
+  line-height: 1.35;
+}
+
+.rst-content h3 {
+  font-size: 122%;
+  font-weight: 700;
+  margin: 24px 0 12px 0;
+  line-height: 1.35;
+}
+
+.rst-content h4 {
+  font-size: 108%;
+  font-weight: 700;
+  margin: 18px 0 10px 0;
+}
+
+.rst-content p {
+  margin: 0 0 18px 0;
+  line-height: 25px;
+}
+
+.rst-content article ul,
+.rst-content article ol {
+  margin: 0 0 18px 0;
+  padding-left: 24px;
+  line-height: 25px;
+}
+
+.rst-content article ul li,
+.rst-content article ol li {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.rst-content a.headerlink {
+  visibility: hidden;
+  margin-left: 8px;
+  font-size: 80%;
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.rst-content h2:hover a.headerlink,
+.rst-content h3:hover a.headerlink,
+.rst-content h4:hover a.headerlink {
+  visibility: visible;
+}
+
+/* ==========================================================================
+   EXACT Official Homepage 2x2 Grid (from godot-docs/master/index.rst)
+   ========================================================================== */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.375rem;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "new-to-game know-game-learn-godot"
+    "know-godot-learn-godot contribute-to-godot";
+}
+
+.grid-item {
+  padding: 1rem;
+  border-radius: 0.375rem;
+  text-align: center;
+  line-height: 1.5;
+  display: block;
+}
+
+.grid-item,
+.grid-item:visited {
+  color: hsla(0, 0%, 100%, 0.9);
+}
+
+.grid-item:hover,
+.grid-item:focus {
+  color: hsla(0, 0%, 100%, 0.95);
+  text-decoration: none;
+  filter: brightness(120%);
+}
+
+.grid-item:active {
+  filter: brightness(80%);
+}
+
+.new-to-game {
+  grid-area: new-to-game;
+  background-color: #166534;
+}
+
+.know-game-learn-godot {
+  grid-area: know-game-learn-godot;
+  background-color: #115e59;
+}
+
+.know-godot-learn-godot {
+  grid-area: know-godot-learn-godot;
+  background-color: #1e3a8a;
+}
+
+.contribute-to-godot {
+  grid-area: contribute-to-godot;
+  background-color: #831843;
+}
+
+/* ==========================================================================
+   EXACT Official Admonitions (from godot-docs/_static/css/custom.css)
+   ========================================================================== */
+.rst-content .admonition,
+.rst-content .admonition.note,
+.rst-content .admonition.seealso {
+  background-color: var(--admonition-note-background-color);
+  border-radius: 4px;
+  box-shadow: 0px 3px 9px 0px rgb(0 0 0 / 29%);
+  color: var(--admonition-note-color);
+  margin: 0 0 24px 0;
+  padding: 0 0 14px 0;
+}
+
+.rst-content .admonition > :not(.admonition-title) {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.rst-content .admonition > ul,
+.rst-content .admonition > ol {
+  margin-left: 16px;
+  margin-right: 16px;
+  padding-left: 22px;
+}
+
+.rst-content .admonition > :last-child {
+  margin-bottom: 0;
+}
+
+.rst-content .admonition .admonition-title,
+.rst-content .admonition.note .admonition-title,
+.rst-content .admonition.seealso .admonition-title {
+  background-color: var(--admonition-note-title-background-color);
+  border-radius: 4px 4px 0 0;
+  color: var(--admonition-note-title-color);
+  font-weight: 700;
+  font-size: 105%;
+  line-height: 120%;
+  padding: 6px 16px;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+}
+
+.rst-content .admonition .admonition-title::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 9px;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-image: var(--admonition-note-icon);
+  mask-image: var(--admonition-note-icon);
+  background-color: var(--admonition-note-title-color);
+}
+
+.rst-content .admonition.attention,
+.rst-content .admonition.caution,
+.rst-content .admonition.warning,
+.rst-content .admonition.important {
+  background-color: var(--admonition-attention-background-color);
+  color: var(--admonition-attention-color);
+}
+
+.rst-content .admonition.attention .admonition-title,
+.rst-content .admonition.caution .admonition-title,
+.rst-content .admonition.warning .admonition-title,
+.rst-content .admonition.important .admonition-title {
+  background-color: var(--admonition-attention-title-background-color);
+  color: var(--admonition-attention-title-color);
+}
+
+.rst-content .admonition.warning .admonition-title::before {
+  -webkit-mask-image: var(--admonition-danger-icon);
+  mask-image: var(--admonition-danger-icon);
+  background-color: var(--admonition-attention-title-color);
+}
+
+.rst-content .admonition.important .admonition-title::before,
+.rst-content .admonition.attention .admonition-title::before {
+  -webkit-mask-image: var(--admonition-attention-icon);
+  mask-image: var(--admonition-attention-icon);
+  background-color: var(--admonition-attention-title-color);
+}
+
+.rst-content .admonition.tip {
+  background-color: var(--admonition-tip-background-color);
+  color: var(--admonition-tip-color);
+}
+
+.rst-content .admonition.tip .admonition-title {
+  background-color: var(--admonition-tip-title-background-color);
+  color: var(--admonition-tip-title-color);
+}
+
+.rst-content .admonition.tip .admonition-title::before {
+  -webkit-mask-image: var(--admonition-tip-icon);
+  mask-image: var(--admonition-tip-icon);
+  background-color: var(--admonition-tip-title-color);
+}
+
+.rst-content .admonition.danger {
+  background-color: var(--admonition-danger-background-color);
+  color: var(--admonition-danger-color);
+}
+
+.rst-content .admonition.danger .admonition-title {
+  background-color: var(--admonition-danger-title-background-color);
+  color: var(--admonition-danger-title-color);
+}
+
+.rst-content .admonition.danger .admonition-title::before {
+  -webkit-mask-image: var(--admonition-danger-icon);
+  mask-image: var(--admonition-danger-icon);
+  background-color: var(--admonition-danger-title-color);
+}
+
+/* ==========================================================================
+   EXACT Official Inline Code, Keyboard Shortcuts & Sphinx Code Tabs
+   ========================================================================== */
+code,
+.rst-content code {
+  font-size: .875em;
+  font-family: var(--monospace-font-family);
+  font-variant-ligatures: none;
+  background-color: var(--code-background-color);
+  border: none;
+  border-radius: 4px;
+}
+
+.rst-content code.literal {
+  color: var(--code-literal-color);
+  font-weight: 600;
+  font-variant-ligatures: none;
+  padding: 3px 5px;
+}
+
+kbd, .kbd {
+  background-color: var(--kbd-background-color);
+  border: 1px solid var(--kbd-outline-color);
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 var(--kbd-shadow-color);
+  color: var(--kbd-text-color);
+  display: inline-block;
+  font-family: var(--monospace-font-family);
+  font-size: 12px;
+  line-height: 11px;
+  padding: 4px 5px;
+  vertical-align: middle;
+}
+
+/* Sphinx Tabs (Exact upstream rules) */
+.rst-content .sphinx-tabs {
+  margin: 0 0 22px 0;
+}
+
+.rst-content [role="tablist"] {
+  border-bottom: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.rst-content .sphinx-tabs-tab {
+  border: none;
+  border-top: 4px solid transparent;
+  background: transparent;
+  color: var(--link-color);
+  padding: 0.5rem 1.25rem;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: default;
+}
+
+.rst-content .sphinx-tabs-tab[aria-selected="true"] {
+  background-color: var(--tabs-background-color);
+  border: none;
+  border-radius: 0;
+  border-top: 4px solid var(--tabs-selected-color);
+}
+
+.rst-content .sphinx-tabs-tab.code-tab[aria-selected="true"] {
+  background-color: var(--code-tabs-background-color);
+  border-top: 4px solid var(--code-tabs-selected-color);
+}
+
+.rst-content .sphinx-tabs-panel {
+  background-color: var(--tabs-background-color);
+  border: none;
+  border-radius: 0;
+  padding: 12px;
+}
+
+.rst-content .sphinx-tabs-panel.code-tab {
+  background-color: var(--code-tabs-background-color);
+}
+
+.rst-content div[class^="highlight"] {
+  border: 3px solid var(--code-tabs-background-color);
+  margin-bottom: 22px;
+}
+
+.rst-content .sphinx-tabs-panel div[class^="highlight"] {
+  border: none;
+  box-shadow: none;
+  margin-bottom: 2px;
+}
+
+.highlight {
+  position: relative;
+  background-color: var(--highlight-background-color);
+  tab-size: 4;
+}
+
+.rst-content div[class^="highlight"] pre {
+  margin: 0 !important;
+  padding: 18px 16px !important;
+  overflow-x: auto;
+  background: transparent !important;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: var(--monospace-font-family);
+  font-variant-ligatures: none;
+  color: var(--highlight-default-color);
+}
+
+.rst-content div[class^="highlight"] pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: inherit !important;
+}
+
+/* Official Copy Button (Exact upstream dimensions, margin, success glow) */
+.highlight button.copybtn {
+  position: absolute;
+  background-color: var(--copybtn-background-color);
+  border: 1px solid var(--copybtn-border-color);
+  border-radius: 4px;
+  box-shadow: var(--copybtn-box-shadow);
+  width: 32px;
+  height: 32px;
+  right: 0;
+  top: 0;
+  margin: 12.25px;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.15s, border-color 0.15s, background-color 0.15s;
+}
+
+.highlight:hover button.copybtn {
+  opacity: 1;
+}
+
+.highlight button.copybtn:hover {
+  background-color: var(--copybtn-background-color-hover);
+  border-color: var(--copybtn-border-color-hover);
+}
+
+.highlight button.copybtn svg {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  color: var(--copybtn-icon-color);
+  pointer-events: none;
+}
+
+.highlight button.copybtn.success {
+  opacity: 1;
+  border-color: var(--copybtn-border-color-success);
+  box-shadow: 0 0 0 0.2em rgb(52 208 88 / 40%);
+}
+
+.highlight button.copybtn.success svg {
+  color: var(--copybtn-icon-color-success);
+}
+
+/* Vertical SVG Architecture Diagram */
+.arch-svg-wrap {
+  background-color: var(--content-wrap-background-color);
+  border: 3px solid var(--code-tabs-background-color);
+  padding: 12px 16px;
+  margin: 0 0 22px 0;
+}
+
+.svg-parent-box { fill: var(--svg-parent-fill); stroke: #8cf; stroke-width: 1.6; }
+.svg-parent-text { fill: var(--svg-parent-text); font-family: var(--monospace-font-family); font-size: 13.5px; font-weight: 600; }
+.svg-child-box { fill: var(--svg-child-fill); stroke: #ee7381; stroke-width: 1.6; }
+.svg-child-text { fill: var(--svg-child-text); font-family: var(--monospace-font-family); font-size: 13.5px; font-weight: 600; }
+.svg-tag-down { fill: var(--svg-tag-down); font-family: var(--monospace-font-family); font-size: 12.5px; font-weight: 700; }
+.svg-tag-up { fill: var(--svg-tag-up); font-family: var(--monospace-font-family); font-size: 12.5px; font-weight: 700; }
+.svg-desc { fill: var(--svg-desc); font-family: var(--sans-serif-font-family); font-size: 11.8px; }
+.svg-sub { fill: var(--svg-sub); font-family: var(--sans-serif-font-family); font-size: 11px; }
+
+/* ==========================================================================
+   EXACT Official Tables (from godot-docs/_static/css/custom.css)
+   ========================================================================== */
+.wy-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin: 0 0 24px 0;
+}
+
+.rst-content table.docutils {
+  width: 100%;
+  border-collapse: collapse;
+  border: 4px solid var(--code-border-color);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.rst-content table.docutils thead {
+  color: var(--body-color);
+}
+
+.rst-content table.docutils td,
+.rst-content table.docutils thead th {
+  border-bottom: 2px solid var(--code-border-color);
+  border-left: 2px solid var(--code-border-color);
+  padding: 6px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+html.writer-html5 .rst-content table.docutils th {
+  border-bottom: 4px solid var(--code-border-color);
+  border-left: 2px solid var(--code-border-color);
+  padding: 8px 14px;
+  vertical-align: middle;
+  font-weight: 700;
+}
+
+.rst-content table.docutils:not(.field-list) tbody tr:nth-child(2n-1) td {
+  background-color: var(--table-row-odd-background-color);
+}
+
+.rst-content table.docutils td a {
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   Footer & Official Neutral Buttons
+   ========================================================================== */
+footer {
+  margin-top: 32px;
+  color: var(--footer-color);
+}
+
+.rst-footer-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.btn-neutral {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: var(--btn-neutral-background-color) !important;
+  color: var(--body-color) !important;
+  text-decoration: none !important;
+}
+
+.btn-neutral:visited {
+  color: var(--body-color) !important;
+}
+
+.btn-neutral:hover {
+  background-color: var(--btn-neutral-hover-background-color) !important;
+  text-decoration: none !important;
+}
+
+.btn-next {
+  margin-left: auto;
+}
+
+.rtd-copyright {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.rtd-copyright p {
+  margin: 4px 0;
+}
+
+/* Floating Bottom-Right RTD Addon Pill */
+.floating-pill {
+  position: fixed;
+  right: 18px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  background-color: var(--navbar-background-color);
+  border: 1px solid var(--hr-color);
+  border-radius: 6px;
+  color: var(--navbar-level-1-color);
+  font-size: 12.5px;
+  font-family: var(--monospace-font-family);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 200;
+}
+
+.floating-pill:hover {
+  border-color: var(--navbar-heading-color);
+}
+
+.pill-lang,
+.pill-ver {
+  color: #4cc38a;
+  font-weight: 600;
+}
+
+.pill-sep {
+  opacity: 0.45;
+}
+
+/* ==========================================================================
+   Responsive Mobile Breakpoint (matches upstream 768px)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  .wy-nav-top {
+    display: flex;
+  }
+  .wy-grid-for-nav {
+    padding-top: 50px;
+  }
+  .wy-nav-side {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    transition: transform 0.22s ease;
+    z-index: 280;
+  }
+  .wy-nav-side.open {
+    transform: translateX(0);
+  }
+  .sidebar-backdrop.open {
+    display: block;
+  }
+  .wy-nav-content {
+    padding: 18px 18px 44px 18px;
+  }
+  .godot-edit-guidelines,
+  .floating-pill {
+    display: none;
+  }
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "new-to-game"
+      "know-game-learn-godot"
+      "know-godot-learn-godot"
+      "contribute-to-godot";
+  }
+}
